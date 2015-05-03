@@ -1,18 +1,20 @@
 #!/bin/bash
 
-FROM='MULTICRAFT_SERVER_LOCATION'
-TO=$(date +%m-%d-%Y-%H%M%S).tar.gz
+FROM='MULTICRAFT_SERVERS'
+DATE=$(date +%m-%d-%Y-%H%M%S).tar.gz
+TO='MULTICRAFT_USER_HOME_DIR'$DATE
 
 tar czfv "$TO" "$FROM"
 
-HOST='FTP_HOST'
+HOST='FTP_SERVER'
 USER='USERNAME'
 PASSWD='PASSWORD'
 
 ftp -in <<EOF
 open $HOST
 user $USER $PASSWD
-put $TO
+lcd MULTICRAFT_USER_HOME_DIR
+put $DATE
 close
 bye
 EOF
