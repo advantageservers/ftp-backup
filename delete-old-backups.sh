@@ -6,7 +6,7 @@ ftpuser=""
 ftppass=""
 putdir="/"
 
-ndays=3
+ndays=2
 
 # work out our cutoff date
 MM=`date --date="$ndays days ago" +%b`
